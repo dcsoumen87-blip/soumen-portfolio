@@ -1,68 +1,245 @@
-// =================================
-// SOUMEN MONDAL - PORTFOLIO JS
-// =================================
+/* =====================================
+   SOUMEN MONDAL
+   SHADOW MONARCH ENGINE
+   VERSION 2.0
+===================================== */
 
 
-// 1. TYPING ANIMATION
+/* =====================================
+   1. AWAKENING LOADING SCREEN
+===================================== */
+
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("loader");
+
+    setTimeout(() => {
+
+        loader.classList.add("hide");
+
+    }, 2200);
+
+});
+
+
+/* =====================================
+   2. TYPING ANIMATION
+===================================== */
 
 const roles = [
-    "Python Developer",
-    "Discord Bot Developer",
-    "Security Bot Developer",
-    "JavaScript Developer",
-    "Technology Enthusiast"
+    "PYTHON DEVELOPER",
+    "DISCORD BOT DEVELOPER",
+    "SECURITY DEVELOPER",
+    "JAVASCRIPT DEVELOPER",
+    "TECH ENTHUSIAST"
 ];
+
+const typingElement = document.getElementById("typing");
 
 let roleIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-const roleElement = document.querySelector(".hero h2");
-
 function typingEffect() {
+
+    if (!typingElement) return;
 
     const currentRole = roles[roleIndex];
 
     if (!deleting) {
 
-        roleElement.textContent =
+        typingElement.textContent =
             currentRole.substring(0, charIndex + 1);
 
         charIndex++;
 
         if (charIndex === currentRole.length) {
+
             deleting = true;
 
             setTimeout(typingEffect, 1500);
+
             return;
+
         }
 
     } else {
 
-        roleElement.textContent =
+        typingElement.textContent =
             currentRole.substring(0, charIndex - 1);
 
         charIndex--;
 
         if (charIndex === 0) {
+
             deleting = false;
 
             roleIndex =
                 (roleIndex + 1) % roles.length;
+
         }
+
     }
 
-    setTimeout(typingEffect, deleting ? 45 : 90);
+    setTimeout(
+        typingEffect,
+        deleting ? 45 : 90
+    );
+
 }
 
-if (roleElement) {
-    typingEffect();
+typingEffect();
+
+
+/* =====================================
+   3. SHADOW PARTICLE SYSTEM
+===================================== */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas() {
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+class ShadowParticle {
+
+    constructor() {
+
+        this.x = Math.random() * window.innerWidth;
+
+        this.y = Math.random() * window.innerHeight;
+
+        this.size = Math.random() * 2 + 0.5;
+
+        this.speedY = Math.random() * 0.5 + 0.1;
+
+        this.speedX = (Math.random() - 0.5) * 0.3;
+
+        this.opacity = Math.random() * 0.6 + 0.2;
+
+    }
+
+    update() {
+
+        this.y -= this.speedY;
+
+        this.x += this.speedX;
+
+        if (this.y < -10) {
+
+            this.y = window.innerHeight + 10;
+
+            this.x = Math.random() * window.innerWidth;
+
+        }
+
+        if (this.x < 0 || this.x > window.innerWidth) {
+
+            this.speedX *= -1;
+
+        }
+
+    }
+
+    draw() {
+
+        ctx.beginPath();
+
+        ctx.arc(
+            this.x,
+            this.y,
+            this.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            `rgba(184, 132, 255, ${this.opacity})`;
+
+        ctx.shadowBlur = 12;
+
+        ctx.shadowColor = "#9333ea";
+
+        ctx.fill();
+
+        ctx.shadowBlur = 0;
+
+    }
+
 }
 
 
-// 2. SCROLL REVEAL ANIMATION
+function createParticles() {
+
+    const particleCount =
+        window.innerWidth < 600 ? 35 : 75;
+
+    particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+
+        particles.push(new ShadowParticle());
+
+    }
+
+}
+
+
+function animateParticles() {
+
+    ctx.clearRect(
+        0,
+        0,
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    particles.forEach(particle => {
+
+        particle.update();
+
+        particle.draw();
+
+    });
+
+    requestAnimationFrame(animateParticles);
+
+}
+
+createParticles();
+
+animateParticles();
+
+window.addEventListener("resize", createParticles);
+
+
+/* =====================================
+   4. SCROLL REVEAL ANIMATION
+===================================== */
+
+const revealElements = document.querySelectorAll(
+    ".content-section, .profile-card, .ability-card, .project-card, .mission-card"
+);
 
 const observer = new IntersectionObserver(
+
     (entries) => {
 
         entries.forEach(entry => {
@@ -71,19 +248,22 @@ const observer = new IntersectionObserver(
 
                 entry.target.classList.add("show");
 
+                observer.unobserve(entry.target);
+
             }
 
         });
 
     },
+
     {
-        threshold: 0.15
+        threshold: 0.12
     }
+
 );
 
-document.querySelectorAll(
-    ".section, .card, .project-card"
-).forEach(element => {
+
+revealElements.forEach(element => {
 
     element.classList.add("reveal");
 
@@ -92,23 +272,25 @@ document.querySelectorAll(
 });
 
 
-// 3. ACTIVE NAVIGATION
+/* =====================================
+   5. ACTIVE NAVIGATION
+===================================== */
 
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll("section[id]");
 
 const navLinks = document.querySelectorAll("nav a");
 
-window.addEventListener("scroll", () => {
+function updateNavigation() {
 
-    let current = "";
+    let currentSection = "";
 
     sections.forEach(section => {
 
         const sectionTop = section.offsetTop;
 
-        if (window.scrollY >= sectionTop - 150) {
+        if (window.scrollY >= sectionTop - 180) {
 
-            current = section.getAttribute("id");
+            currentSection = section.id;
 
         }
 
@@ -118,7 +300,10 @@ window.addEventListener("scroll", () => {
 
         link.classList.remove("active");
 
-        if (link.getAttribute("href") === "#" + current) {
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
 
             link.classList.add("active");
 
@@ -126,24 +311,35 @@ window.addEventListener("scroll", () => {
 
     });
 
+}
+
+window.addEventListener("scroll", updateNavigation, {
+    passive: true
 });
 
+updateNavigation();
 
-// 4. DYNAMIC COPYRIGHT YEAR
 
-const yearElement = document.querySelector("footer p");
+/* =====================================
+   6. DYNAMIC COPYRIGHT YEAR
+===================================== */
+
+const yearElement = document.getElementById("year");
 
 if (yearElement) {
 
-    yearElement.innerHTML =
-        `© ${new Date().getFullYear()} Soumen Mondal. All Rights Reserved.`;
+    yearElement.textContent = new Date().getFullYear();
 
 }
 
 
-// 5. BUTTON CLICK EFFECT
+/* =====================================
+   7. SMOOTH BUTTON INTERACTIONS
+===================================== */
 
-document.querySelectorAll(".btn").forEach(button => {
+document.querySelectorAll(
+    ".primary-btn, .secondary-btn"
+).forEach(button => {
 
     button.addEventListener("click", () => {
 
@@ -160,11 +356,23 @@ document.querySelectorAll(".btn").forEach(button => {
 });
 
 
-// 6. CONSOLE MESSAGE
+/* =====================================
+   8. SYSTEM CONSOLE
+===================================== */
 
 console.log(
-    "%c SOUMEN MONDAL | DEVELOPER PORTFOLIO ",
-    "background:#9333ea;color:white;padding:10px;font-size:14px;"
+    "%c SHADOW MONARCH SYSTEM ",
+    "background:#080611;color:#bd83ff;padding:12px;font-size:16px;font-weight:bold;"
 );
 
-console.log("Portfolio initialized successfully!");
+console.log(
+    "%c HUNTER: SOUMEN MONDAL ",
+    "color:#bd83ff;font-size:13px;font-weight:bold;"
+);
+
+console.log(
+    "%c SYSTEM STATUS: ONLINE ",
+    "color:#62ffad;font-size:12px;"
+);
+
+console.log("Shadow Monarch Engine initialized.");
