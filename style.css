@@ -1,4 +1,12 @@
-/* GOOGLE FONT */
+/* =====================================
+   SOUMEN MONDAL - PREMIUM PORTFOLIO
+   Theme: Black + Purple
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* RESET */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +20,29 @@ html {
 
 body {
     background: #090811;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #090811;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#7c3aed, #c026d3);
+    border-radius: 10px;
+}
+
+/* SELECTION */
+
+::selection {
+    background: #9333ea;
     color: white;
 }
 
@@ -23,6 +54,7 @@ header {
     align-items: center;
     padding: 25px 8%;
     background: rgba(15, 12, 25, 0.95);
+    backdrop-filter: blur(15px);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -39,6 +71,8 @@ header {
     color: #a855f7;
 }
 
+/* NAVIGATION */
+
 nav {
     display: flex;
     gap: 30px;
@@ -48,11 +82,24 @@ nav a {
     color: #ccc;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.3s;
+    position: relative;
+    transition: 0.3s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
     color: #c084fc;
+}
+
+nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 100%;
+    height: 2px;
+    background: #a855f7;
+    box-shadow: 0 0 10px #a855f7;
 }
 
 /* HERO SECTION */
@@ -62,10 +109,13 @@ nav a:hover {
     display: flex;
     align-items: center;
     padding: 80px 10%;
+
     background:
-    radial-gradient(circle at 80% 30%,
-    rgba(124, 58, 237, 0.2),
-    transparent 40%);
+    radial-gradient(
+        circle at 80% 30%,
+        rgba(124, 58, 237, 0.2),
+        transparent 40%
+    );
 }
 
 .hero-content {
@@ -113,21 +163,28 @@ nav a:hover {
 .btn {
     display: inline-block;
     padding: 13px 25px;
+
     background: linear-gradient(
         135deg,
         #7c3aed,
         #c026d3
     );
+
     color: white;
     text-decoration: none;
     border-radius: 7px;
-    transition: 0.3s;
+
+    transition: all 0.3s ease;
     border: 1px solid transparent;
 }
 
 .btn:hover {
     transform: translateY(-4px);
     box-shadow: 0 5px 25px #9333ea66;
+}
+
+.btn:active {
+    transform: scale(0.96);
 }
 
 .secondary {
@@ -140,6 +197,7 @@ nav a:hover {
 .section {
     padding: 100px 10%;
     text-align: center;
+    scroll-margin-top: 90px;
 }
 
 .section h2 {
@@ -195,6 +253,7 @@ nav a:hover {
 .project-card:hover {
     transform: translateY(-8px);
     border-color: #a855f7;
+    box-shadow: 0 10px 30px #9333ea22;
 }
 
 .project-card h3 {
@@ -213,13 +272,11 @@ nav a:hover {
 
 #contact {
     background:
-    radial-gradient(circle,
-    #24113d,
-    #090811 70%);
-}
-
-#contact .btn {
-    margin-top: 25px;
+    radial-gradient(
+        circle,
+        #24113d,
+        #090811 70%
+    );
 }
 
 /* FOOTER */
@@ -232,7 +289,26 @@ footer {
     font-size: 13px;
 }
 
-/* MOBILE RESPONSIVE */
+/* SCROLL REVEAL ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ACTIVE NAVIGATION ANIMATION */
+
+nav a {
+    transition: color 0.3s ease;
+}
+
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 768px) {
 
@@ -270,7 +346,17 @@ footer {
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .reveal {
+        transform: translateY(15px);
+    }
+
+    .reveal.show {
+        transform: translateY(0);
+    }
 }
+
+/* SMALL MOBILE */
 
 @media (max-width: 420px) {
 
@@ -281,4 +367,23 @@ footer {
     nav a {
         font-size: 12px;
     }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
 }
