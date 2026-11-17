@@ -3,12 +3,7 @@
    SOLO LEVELING x AXTER INSPIRED
 ========================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
-
-
-/* =========================================
-   ROOT VARIABLES
-========================================= */
+/* ROOT VARIABLES */
 
 :root {
     --bg: #080611;
@@ -32,9 +27,7 @@
 }
 
 
-/* =========================================
-   RESET
-========================================= */
+/* RESET */
 
 * {
     margin: 0;
@@ -44,7 +37,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -60,19 +53,13 @@ a {
     color: inherit;
 }
 
-button {
-    font-family: inherit;
-}
-
 ::selection {
     background: var(--purple);
     color: white;
 }
 
 
-/* =========================================
-   SCROLLBAR
-========================================= */
+/* SCROLLBAR */
 
 ::-webkit-scrollbar {
     width: 7px;
@@ -92,9 +79,7 @@ button {
 }
 
 
-/* =========================================
-   BACKGROUND EFFECTS
-========================================= */
+/* BACKGROUND EFFECTS */
 
 body::before {
     content: "";
@@ -120,6 +105,7 @@ body::before {
 
 .ambient {
     position: fixed;
+
     width: 450px;
     height: 450px;
 
@@ -155,9 +141,7 @@ body::before {
 }
 
 
-/* =========================================
-   LOADER
-========================================= */
+/* LOADING SCREEN */
 
 #loader {
     position: fixed;
@@ -237,13 +221,11 @@ body::before {
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* HEADER */
 
 .site-header {
     width: 100%;
-    height: 85px;
+    min-height: 85px;
 
     padding: 0 8%;
 
@@ -296,7 +278,8 @@ body::before {
     transition: var(--transition);
 }
 
-.site-header nav a:hover {
+.site-header nav a:hover,
+.site-header nav a.active {
     color: var(--purple-light);
 }
 
@@ -326,9 +309,7 @@ body::before {
 }
 
 
-/* =========================================
-   HERO SECTION
-========================================= */
+/* HERO SECTION */
 
 .hero {
     min-height: 730px;
@@ -457,6 +438,9 @@ body::before {
     color: var(--muted);
 }
 
+
+/* BUTTONS */
+
 .hero-actions {
     display: flex;
     gap: 15px;
@@ -464,11 +448,6 @@ body::before {
     margin-top: 35px;
     flex-wrap: wrap;
 }
-
-
-/* =========================================
-   BUTTONS
-========================================= */
 
 .button {
     min-height: 48px;
@@ -520,9 +499,7 @@ body::before {
 }
 
 
-/* =========================================
-   HERO STATS
-========================================= */
+/* HERO STATS */
 
 .hero-meta {
     display: flex;
@@ -556,9 +533,7 @@ body::before {
 }
 
 
-/* =========================================
-   SHADOW MONARCH ART
-========================================= */
+/* SHADOW MONARCH ART */
 
 .hero-art {
     width: 100%;
@@ -716,9 +691,7 @@ body::before {
 }
 
 
-/* =========================================
-   GENERAL SECTION
-========================================= */
+/* GENERAL SECTION */
 
 .section {
     padding: 120px 10%;
@@ -775,9 +748,7 @@ body::before {
 }
 
 
-/* =========================================
-   ABOUT
-========================================= */
+/* ABOUT SECTION */
 
 .about-section {
     background: linear-gradient(
@@ -902,9 +873,7 @@ body::before {
 }
 
 
-/* =========================================
-   SKILLS
-========================================= */
+/* SKILLS */
 
 .skills-grid {
     display: grid;
@@ -992,9 +961,7 @@ body::before {
 }
 
 
-/* =========================================
-   PROJECTS
-========================================= */
+/* PROJECTS */
 
 .projects-section {
     background: rgba(22, 12, 40, 0.25);
@@ -1008,6 +975,9 @@ body::before {
 
 .project-card {
     padding: 30px 35px;
+
+    position: relative;
+    overflow: hidden;
 
     border: 1px solid var(--border);
 
@@ -1026,6 +996,28 @@ body::before {
     transform: translateX(8px);
 
     box-shadow: -5px 0 30px rgba(155, 92, 255, 0.1);
+}
+
+.project-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: var(--mouse-x, -1000px);
+    top: var(--mouse-y, -1000px);
+
+    width: 200px;
+    height: 200px;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(155, 92, 255, 0.12),
+        transparent 70%
+    );
+
+    pointer-events: none;
 }
 
 .project-top,
@@ -1112,9 +1104,7 @@ body::before {
 }
 
 
-/* =========================================
-   EXPERIENCE
-========================================= */
+/* EXPERIENCE */
 
 .timeline {
     border-top: 1px solid var(--border);
@@ -1173,9 +1163,7 @@ body::before {
 }
 
 
-/* =========================================
-   CONTACT
-========================================= */
+/* CONTACT */
 
 .contact-section {
     min-height: 600px;
@@ -1260,9 +1248,7 @@ body::before {
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
+/* FOOTER */
 
 footer {
     min-height: 110px;
@@ -1294,9 +1280,31 @@ footer small {
 }
 
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
+/* SCROLL REVEAL */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* NAVIGATION ACTIVE STATE */
+
+.site-header nav a.active {
+    color: var(--purple-light);
+}
+
+
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 1000px) {
 
@@ -1505,9 +1513,7 @@ footer small {
 }
 
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
+/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
 
