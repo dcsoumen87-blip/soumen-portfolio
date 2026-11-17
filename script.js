@@ -1,13 +1,12 @@
-/* =====================================
-   SOUMEN MONDAL
-   SHADOW MONARCH ENGINE
-   VERSION 2.0
-===================================== */
+/* =========================================
+   SOUMEN MONDAL PORTFOLIO
+   SOLO LEVELING ANIMATION SYSTEM
+========================================= */
 
 
-/* =====================================
-   1. AWAKENING LOADING SCREEN
-===================================== */
+/* =========================================
+   1. LOADER CONTROL
+========================================= */
 
 window.addEventListener("load", () => {
 
@@ -15,92 +14,97 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
 
-        loader.classList.add("hide");
+        if (loader) {
+            loader.style.opacity = "0";
+
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 800);
+        }
 
     }, 2200);
 
 });
 
 
-/* =====================================
+/* =========================================
    2. TYPING ANIMATION
-===================================== */
-
-const roles = [
-    "PYTHON DEVELOPER",
-    "DISCORD BOT DEVELOPER",
-    "SECURITY DEVELOPER",
-    "JAVASCRIPT DEVELOPER",
-    "TECH ENTHUSIAST"
-];
+========================================= */
 
 const typingElement = document.getElementById("typing");
+
+const roles = [
+    "DISCORD DEVELOPER",
+    "SECURITY SYSTEM BUILDER",
+    "ESPORTS COMMUNITY STAFF",
+    "TECH ENTHUSIAST",
+    "AI DEVELOPER"
+];
 
 let roleIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-function typingEffect() {
+function typeEffect() {
 
     if (!typingElement) return;
 
     const currentRole = roles[roleIndex];
 
-    if (!deleting) {
-
-        typingElement.textContent =
-            currentRole.substring(0, charIndex + 1);
-
-        charIndex++;
-
-        if (charIndex === currentRole.length) {
-
-            deleting = true;
-
-            setTimeout(typingEffect, 1500);
-
-            return;
-
-        }
-
-    } else {
-
-        typingElement.textContent =
-            currentRole.substring(0, charIndex - 1);
+    if (deleting) {
 
         charIndex--;
 
-        if (charIndex === 0) {
+    } else {
 
-            deleting = false;
-
-            roleIndex =
-                (roleIndex + 1) % roles.length;
-
-        }
+        charIndex++;
 
     }
 
-    setTimeout(
-        typingEffect,
-        deleting ? 45 : 90
-    );
+    typingElement.textContent =
+        currentRole.substring(0, charIndex);
+
+    let speed = deleting ? 45 : 90;
+
+    if (!deleting && charIndex === currentRole.length) {
+
+        deleting = true;
+        speed = 1600;
+
+    } else if (deleting && charIndex === 0) {
+
+        deleting = false;
+
+        roleIndex = (roleIndex + 1) % roles.length;
+
+        speed = 400;
+
+    }
+
+    setTimeout(typeEffect, speed);
 
 }
 
-typingEffect();
+typeEffect();
 
 
-/* =====================================
-   3. SHADOW PARTICLE SYSTEM
-===================================== */
+/* =========================================
+   3. SHADOW PARTICLES
+========================================= */
 
 const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+const ctx = canvas?.getContext("2d");
 
 let particles = [];
 
+let mouse = {
+    x: null,
+    y: null
+};
+
 function resizeCanvas() {
+
+    if (!canvas || !ctx) return;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -112,53 +116,61 @@ function resizeCanvas() {
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
+    createParticles();
+
 }
 
-resizeCanvas();
-
-window.addEventListener("resize", resizeCanvas);
 
 class ShadowParticle {
 
     constructor() {
 
         this.x = Math.random() * window.innerWidth;
-
         this.y = Math.random() * window.innerHeight;
 
         this.size = Math.random() * 2 + 0.5;
 
-        this.speedY = Math.random() * 0.5 + 0.1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
 
-        this.speedX = (Math.random() - 0.5) * 0.3;
-
-        this.opacity = Math.random() * 0.6 + 0.2;
+        this.opacity = Math.random() * 0.6 + 0.1;
 
     }
 
     update() {
 
-        this.y -= this.speedY;
-
         this.x += this.speedX;
+        this.y += this.speedY;
 
-        if (this.y < -10) {
+        if (this.x < 0) this.x = window.innerWidth;
+        if (this.x > window.innerWidth) this.x = 0;
 
-            this.y = window.innerHeight + 10;
+        if (this.y < 0) this.y = window.innerHeight;
+        if (this.y > window.innerHeight) this.y = 0;
 
-            this.x = Math.random() * window.innerWidth;
+        if (mouse.x !== null && mouse.y !== null) {
 
-        }
+            const dx = this.x - mouse.x;
+            const dy = this.y - mouse.y;
 
-        if (this.x < 0 || this.x > window.innerWidth) {
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-            this.speedX *= -1;
+            if (distance < 100 && distance > 0) {
+
+                const force = (100 - distance) / 100;
+
+                this.x += (dx / distance) * force * 1.5;
+                this.y += (dy / distance) * force * 1.5;
+
+            }
 
         }
 
     }
 
     draw() {
+
+        if (!ctx) return;
 
         ctx.beginPath();
 
@@ -171,11 +183,10 @@ class ShadowParticle {
         );
 
         ctx.fillStyle =
-            `rgba(184, 132, 255, ${this.opacity})`;
+            `rgba(174, 114, 255, ${this.opacity})`;
 
         ctx.shadowBlur = 12;
-
-        ctx.shadowColor = "#9333ea";
+        ctx.shadowColor = "#9b5cff";
 
         ctx.fill();
 
@@ -204,6 +215,8 @@ function createParticles() {
 
 function animateParticles() {
 
+    if (!canvas || !ctx) return;
+
     ctx.clearRect(
         0,
         0,
@@ -214,7 +227,6 @@ function animateParticles() {
     particles.forEach(particle => {
 
         particle.update();
-
         particle.draw();
 
     });
@@ -223,30 +235,71 @@ function animateParticles() {
 
 }
 
-createParticles();
 
-animateParticles();
+if (canvas && ctx) {
 
-window.addEventListener("resize", createParticles);
+    resizeCanvas();
+
+    animateParticles();
+
+    window.addEventListener("resize", resizeCanvas);
+
+}
 
 
-/* =====================================
-   4. SCROLL REVEAL ANIMATION
-===================================== */
+/* =========================================
+   4. MOUSE TRACKING
+========================================= */
+
+window.addEventListener("mousemove", (event) => {
+
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+
+});
+
+window.addEventListener("mouseout", (event) => {
+
+    if (!event.relatedTarget) {
+
+        mouse.x = null;
+        mouse.y = null;
+
+    }
+
+});
+
+
+/* =========================================
+   5. SCROLL REVEAL
+========================================= */
 
 const revealElements = document.querySelectorAll(
-    ".content-section, .profile-card, .ability-card, .project-card, .mission-card"
+    ".section-kicker, " +
+    ".section-title-row, " +
+    ".about-grid, " +
+    ".skill-card, " +
+    ".project-card, " +
+    ".timeline article, " +
+    ".contact-section > *"
 );
 
-const observer = new IntersectionObserver(
+revealElements.forEach(element => {
 
-    (entries) => {
+    element.classList.add("reveal");
+
+});
+
+
+const revealObserver = new IntersectionObserver(
+
+    (entries, observer) => {
 
         entries.forEach(entry => {
 
             if (entry.isIntersecting) {
 
-                entry.target.classList.add("show");
+                entry.target.classList.add("active");
 
                 observer.unobserve(entry.target);
 
@@ -265,64 +318,119 @@ const observer = new IntersectionObserver(
 
 revealElements.forEach(element => {
 
-    element.classList.add("reveal");
-
-    observer.observe(element);
+    revealObserver.observe(element);
 
 });
 
 
-/* =====================================
-   5. ACTIVE NAVIGATION
-===================================== */
+/* =========================================
+   6. NAVIGATION ACTIVE STATE
+========================================= */
 
-const sections = document.querySelectorAll("section[id]");
+const sections = document.querySelectorAll("main section[id]");
 
-const navLinks = document.querySelectorAll("nav a");
+const navLinks = document.querySelectorAll(
+    ".site-header nav a"
+);
 
-function updateNavigation() {
 
-    let currentSection = "";
+const navObserver = new IntersectionObserver(
 
-    sections.forEach(section => {
+    (entries) => {
 
-        const sectionTop = section.offsetTop;
+        entries.forEach(entry => {
 
-        if (window.scrollY >= sectionTop - 180) {
+            if (entry.isIntersecting) {
 
-            currentSection = section.id;
+                navLinks.forEach(link => {
+
+                    link.classList.remove("active");
+
+                    if (
+                        link.getAttribute("href") ===
+                        "#" + entry.target.id
+                    ) {
+
+                        link.classList.add("active");
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    },
+
+    {
+        rootMargin: "-30% 0px -60% 0px"
+    }
+
+);
+
+
+sections.forEach(section => {
+
+    navObserver.observe(section);
+
+});
+
+
+/* =========================================
+   7. SMOOTH NAVIGATION
+========================================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
+
+        if (target) {
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
         }
 
     });
 
-    navLinks.forEach(link => {
+});
 
-        link.classList.remove("active");
 
-        if (
-            link.getAttribute("href") ===
-            "#" + currentSection
-        ) {
+/* =========================================
+   8. PROJECT HOVER EFFECT
+========================================= */
 
-            link.classList.add("active");
+const projectCards = document.querySelectorAll(".project-card");
 
-        }
+projectCards.forEach(card => {
+
+    card.addEventListener("mousemove", (event) => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
 
     });
 
-}
-
-window.addEventListener("scroll", updateNavigation, {
-    passive: true
 });
 
-updateNavigation();
 
-
-/* =====================================
-   6. DYNAMIC COPYRIGHT YEAR
-===================================== */
+/* =========================================
+   9. AUTOMATIC COPYRIGHT YEAR
+========================================= */
 
 const yearElement = document.getElementById("year");
 
@@ -333,46 +441,21 @@ if (yearElement) {
 }
 
 
-/* =====================================
-   7. SMOOTH BUTTON INTERACTIONS
-===================================== */
-
-document.querySelectorAll(
-    ".primary-btn, .secondary-btn"
-).forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        button.style.transform = "scale(0.96)";
-
-        setTimeout(() => {
-
-            button.style.transform = "";
-
-        }, 150);
-
-    });
-
-});
-
-
-/* =====================================
-   8. SYSTEM CONSOLE
-===================================== */
+/* =========================================
+   10. SHADOW MONARCH CONSOLE
+========================================= */
 
 console.log(
-    "%c SHADOW MONARCH SYSTEM ",
-    "background:#080611;color:#bd83ff;padding:12px;font-size:16px;font-weight:bold;"
+    "%c SOUMEN MONDAL ",
+    "background:#5422a5;color:white;padding:10px;font-size:18px;font-weight:bold;"
 );
 
 console.log(
-    "%c HUNTER: SOUMEN MONDAL ",
-    "color:#bd83ff;font-size:13px;font-weight:bold;"
+    "%c THE SHADOW MONARCH HAS AWAKENED.",
+    "color:#b98aff;font-size:14px;"
 );
 
-console.log(
-    "%c SYSTEM STATUS: ONLINE ",
-    "color:#62ffad;font-size:12px;"
-);
 
-console.log("Shadow Monarch Engine initialized.");
+/* =========================================
+   SYSTEM INITIALIZATION COMPLETE
+========================================= */
