@@ -8,495 +8,646 @@
     <meta name="theme-color" content="#080611">
 
     <meta name="description"
-    content="Soumen Mondal - Developer, Discord Bot Developer and Security Engineer.">
+    content="Soumen Mondal — Discord Developer, Security Systems Builder and Esports Community Professional.">
 
-    <title>Soumen Mondal | Shadow Monarch</title>
+    <title>Soumen Mondal — Shadow Monarch</title>
 
+    <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- LOADING SCREEN -->
+    <!-- LOADING SCREEN -->
 
-<div id="loader">
+    <div id="loader">
 
-    <div class="loader-content">
+        <div class="loader-mark">♛</div>
 
-        <div class="shadow-symbol">♛</div>
+        <div class="loader-title">
+            AWAKENING<span>...</span>
+        </div>
 
-        <h1>AWAKENING</h1>
+        <p>THE SHADOW MONARCH IS RISING</p>
 
-        <p>ARISE, SHADOW MONARCH</p>
-
-        <div class="loader-bar">
-            <span></span>
+        <div class="loader-line">
+            <i></i>
         </div>
 
     </div>
 
-</div>
+
+    <!-- BACKGROUND -->
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <canvas id="particles"></canvas>
 
 
-<!-- BACKGROUND EFFECTS -->
+    <!-- NAVIGATION -->
 
-<div class="background-glow"></div>
+    <header class="site-header">
 
-<canvas id="particles"></canvas>
+        <a class="brand" href="#home">
+            SOUMEN<span>.</span>
+            <small>SHADOW MONARCH</small>
+        </a>
 
+        <nav id="navigation">
 
-<!-- NAVIGATION -->
+            <a href="#profile">ABOUT</a>
+            <a href="#skills">SKILLS</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#contact">CONTACT</a>
 
-<header>
+        </nav>
 
-    <div class="logo">
-        SOUMEN<span>.</span>
-    </div>
-
-    <nav id="navigation">
-
-        <a href="#home">HOME</a>
-        <a href="#profile">PROFILE</a>
-        <a href="#skills">ABILITIES</a>
-        <a href="#projects">ARCHIVES</a>
-        <a href="#experience">MISSIONS</a>
-        <a href="#contact">GUILD</a>
-
-    </nav>
-
-    <div class="rank-badge">
-        S-RANK
-    </div>
-
-</header>
-
-
-<!-- HERO SECTION -->
-
-<section id="home" class="hero">
-
-    <div class="hero-content">
-
-        <div class="system-label">
-            <span class="online-dot"></span>
-            SYSTEM ONLINE
+        <div class="rank-chip">
+            <i></i> S-RANK HUNTER
         </div>
 
-        <p class="small-title">
-            WELCOME, HUNTER
-        </p>
+    </header>
 
-        <h1>
-            SOUMEN<br>
-            <span>MONDAL</span>
-        </h1>
 
-        <h2 id="typing">
-            PYTHON DEVELOPER
-        </h2>
+    <main>
 
-        <p class="hero-description">
+        <!-- HERO SECTION -->
 
-            A Developer. A Creator. A Problem Solver.
+        <section class="hero" id="home">
 
-            Building Discord Security Systems,
-            AI Assistants and Digital Experiences.
+            <div class="hero-copy">
 
-        </p>
+                <div class="eyebrow">
+                    <span class="pulse-dot"></span>
+                    SYSTEM ONLINE
+                    <b>/</b>
+                    PORTFOLIO 2026
+                </div>
 
-        <div class="hero-buttons">
+                <p class="intro-line">HELLO, I'M</p>
 
-            <a href="#projects" class="primary-btn">
-                EXPLORE ARCHIVES ↗
-            </a>
+                <h1>
+                    SOUMEN<br>
+                    <span>MONDAL</span>
+                </h1>
 
-            <a href="#contact" class="secondary-btn">
-                CONTACT HUNTER
-            </a>
+                <div class="role-line">
+                    <span id="typing">DISCORD DEVELOPER</span>
+                    <i></i>
+                </div>
 
-        </div>
+                <p class="hero-description">
+                    I build digital systems, Discord experiences
+                    and security-focused tools. From community
+                    operations to code — I turn ideas into
+                    working experiences.
+                </p>
 
-        <div class="hunter-info">
+                <div class="hero-actions">
 
-            <div>
-                <span>RANK</span>
-                <h3>S</h3>
+                    <a class="button button-primary" href="#projects">
+                        EXPLORE MY WORK <b>↗</b>
+                    </a>
+
+                    <a class="button button-ghost" href="#contact">
+                        LET'S CONNECT
+                    </a>
+
+                </div>
+
+                <div class="hero-meta">
+
+                    <div>
+                        <strong>03<span>+</span></strong>
+                        <small>ACTIVE PROJECTS</small>
+                    </div>
+
+                    <div>
+                        <strong>06</strong>
+                        <small>CORE SKILLS</small>
+                    </div>
+
+                    <div>
+                        <strong>24<span>/7</span></strong>
+                        <small>BUILD MODE</small>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div>
-                <span>CLASS</span>
-                <h3>DEVELOPER</h3>
+
+            <!-- SHADOW MONARCH ART -->
+
+            <div class="hero-art">
+
+                <div class="orbit orbit-a"></div>
+                <div class="orbit orbit-b"></div>
+                <div class="orbit orbit-c"></div>
+
+                <div class="rune rune-top">
+                    ARISE
+                </div>
+
+                <div class="monarch-core">
+                    <span>♛</span>
+                </div>
+
+                <div class="rune rune-bottom">
+                    SHADOW MONARCH
+                </div>
+
+                <div class="art-index">
+                    NO. 001
+                    <span>HUNTER PROFILE</span>
+                </div>
+
             </div>
 
-            <div>
-                <span>STATUS</span>
-                <h3>ACTIVE</h3>
+            <div class="hero-side-note">
+                INDEPENDENT DEVELOPER
+                <span>✦</span>
+                ESPORTS COMMUNITY
             </div>
 
-        </div>
+        </section>
 
-    </div>
 
-    <div class="hero-visual">
+        <!-- ABOUT SECTION -->
 
-        <div class="magic-circle">
+        <section class="section about-section" id="profile">
 
-            <div class="circle-inner">
-                <span>♛</span>
+            <div class="section-kicker">
+                01 <span>/</span> HUNTER PROFILE
             </div>
 
-        </div>
+            <div class="section-title-row">
 
-        <div class="floating-text">
-            SHADOW MONARCH
-        </div>
+                <h2>
+                    THE PERSON<br>
+                    BEHIND THE <em>SYSTEM.</em>
+                </h2>
 
-    </div>
+                <p class="section-aside">
+                    A CREATOR. A BUILDER.<br>
+                    ALWAYS EVOLVING.
+                </p>
 
-</section>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="profile-panel">
+
+                    <div class="profile-monogram">
+                        SM<span>✦</span>
+                    </div>
+
+                    <div>
+                        <small>PLAYER ID / 001</small>
+
+                        <h3>SOUMEN MONDAL</h3>
+
+                        <p>Developer & Technology Enthusiast</p>
+                    </div>
+
+                    <div class="profile-rank">
+                        <small>RANK</small>
+                        <strong>S</strong>
+                    </div>
+
+                </div>
+
+                <div class="about-copy">
+
+                    <p class="lead">
+                        I enjoy building tools that make online
+                        communities safer, smarter and easier
+                        to manage.
+                    </p>
+
+                    <p>
+                        My focus includes Discord bot development,
+                        defensive security systems, automation
+                        and AI-powered applications. Alongside
+                        development, I have experience supporting
+                        esports communities, moderation teams
+                        and event operations.
+                    </p>
+
+                    <div class="tag-row">
+
+                        <span>DISCORD DEVELOPER</span>
+                        <span>SECURITY SYSTEMS</span>
+                        <span>ESPORTS</span>
+                        <span>AI & AUTOMATION</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-<!-- PROFILE SECTION -->
+        <!-- SKILLS SECTION -->
 
-<section id="profile" class="content-section">
+        <section class="section skills-section" id="skills">
 
-    <div class="section-heading">
+            <div class="section-kicker">
+                02 <span>/</span> DEVELOPER ATTRIBUTES
+            </div>
 
-        <span>01 / HUNTER PROFILE</span>
+            <div class="section-title-row">
 
-        <h2>
-            PLAYER <span>INFORMATION</span>
-        </h2>
+                <h2>
+                    SKILLS &<br>
+                    <em>ABILITIES.</em>
+                </h2>
 
-    </div>
+                <p class="section-aside">
+                    TOOLS IN MY<br>
+                    ARSENAL.
+                </p>
 
-    <div class="profile-card">
+            </div>
 
-        <div class="profile-icon">
-            SM
-        </div>
+            <div class="skills-grid">
 
-        <div class="profile-details">
+                <article class="skill-card">
+                    <span class="skill-no">01</span>
+                    <div class="skill-icon">PY</div>
+                    <h3>PYTHON</h3>
+                    <p>Discord bots, automation and application logic.</p>
+                    <small>PROGRAMMING</small>
+                </article>
 
-            <h3>Soumen Mondal</h3>
+                <article class="skill-card">
+                    <span class="skill-no">02</span>
+                    <div class="skill-icon">JS</div>
+                    <h3>JAVASCRIPT</h3>
+                    <p>Web experiences and Discord applications.</p>
+                    <small>PROGRAMMING</small>
+                </article>
 
-            <p>
-                Developer & Technology Enthusiast
+                <article class="skill-card">
+                    <span class="skill-no">03</span>
+                    <div class="skill-icon">DB</div>
+                    <h3>DATABASE</h3>
+                    <p>SQLite, aiosqlite and structured data management.</p>
+                    <small>DATA</small>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-no">04</span>
+                    <div class="skill-icon">DC</div>
+                    <h3>DISCORD</h3>
+                    <p>Bot development and community systems.</p>
+                    <small>PLATFORM</small>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-no">05</span>
+                    <div class="skill-icon">盾</div>
+                    <h3>SECURITY</h3>
+                    <p>Anti-nuke concepts, moderation and defensive tooling.</p>
+                    <small>PROTECTION</small>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-no">06</span>
+                    <div class="skill-icon">GH</div>
+                    <h3>GITHUB</h3>
+                    <p>Version control and collaborative workflows.</p>
+                    <small>TOOLS</small>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS SECTION -->
+
+        <section class="section projects-section" id="projects">
+
+            <div class="section-kicker">
+                03 <span>/</span> SHADOW ARCHIVES
+            </div>
+
+            <div class="section-title-row">
+
+                <h2>
+                    SELECTED<br>
+                    <em>PROJECTS.</em>
+                </h2>
+
+                <p class="section-aside">
+                    BUILT WITH PURPOSE.<br>
+                    POWERED BY CURIOSITY.
+                </p>
+
+            </div>
+
+            <div class="project-list">
+
+                <article class="project-card">
+
+                    <div class="project-top">
+                        <span>01 / S-RANK PROJECT</span>
+                        <span>SECURITY SYSTEM</span>
+                    </div>
+
+                    <div class="project-main">
+
+                        <div>
+                            <h3>
+                                SENTINEL<br>
+                                <em>GUARD</em>
+                            </h3>
+
+                            <p>
+                                Enterprise-focused Discord security
+                                bot concept with anti-nuke, anti-raid,
+                                moderation and recovery systems.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>PYTHON</span>
+                                <span>DISCORD.PY</span>
+                                <span>SQLITE</span>
+                            </div>
+                        </div>
+
+                        <div class="project-symbol">盾</div>
+
+                    </div>
+
+                    <div class="project-bottom">
+                        <span>DEFEND THE COMMUNITY</span>
+                        <b>↗</b>
+                    </div>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-top">
+                        <span>02 / A-RANK PROJECT</span>
+                        <span>AI ASSISTANT</span>
+                    </div>
+
+                    <div class="project-main">
+
+                        <div>
+                            <h3>
+                                SOUVION<br>
+                                <em>AI</em>
+                            </h3>
+
+                            <p>
+                                Modular AI-powered Discord assistant
+                                with knowledge management and
+                                configurable provider integrations.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>PYTHON</span>
+                                <span>AI</span>
+                                <span>JSON</span>
+                            </div>
+                        </div>
+
+                        <div class="project-symbol">✧</div>
+
+                    </div>
+
+                    <div class="project-bottom">
+                        <span>INTELLIGENCE, INTEGRATED</span>
+                        <b>↗</b>
+                    </div>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-top">
+                        <span>03 / A-RANK PROJECT</span>
+                        <span>CAMPAIGN SIMULATOR</span>
+                    </div>
+
+                    <div class="project-main">
+
+                        <div>
+                            <h3>
+                                SOUVION<br>
+                                <em>PROMO</em>
+                            </h3>
+
+                            <p>
+                                Educational Discord campaign simulator
+                                for previewing and managing multi-server
+                                promotional workflows.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>NODE.JS</span>
+                                <span>DISCORD.JS</span>
+                                <span>JSON</span>
+                            </div>
+                        </div>
+
+                        <div class="project-symbol">⌁</div>
+
+                    </div>
+
+                    <div class="project-bottom">
+                        <span>SIMULATE. PLAN. IMPROVE.</span>
+                        <b>↗</b>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPERIENCE SECTION -->
+
+        <section class="section experience-section" id="experience">
+
+            <div class="section-kicker">
+                04 <span>/</span> MISSION RECORDS
+            </div>
+
+            <div class="section-title-row">
+
+                <h2>
+                    EXPERIENCE<br>
+                    <em>& JOURNEY.</em>
+                </h2>
+
+                <p class="section-aside">
+                    EVERY ROLE IS A<br>
+                    NEW MISSION.
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                <article>
+
+                    <div class="timeline-count">01</div>
+
+                    <div>
+                        <small>COMMUNITY OPERATIONS</small>
+                        <h3>ESPORTS & DISCORD MODERATION</h3>
+
+                        <p>
+                            Supported gaming communities through
+                            moderation, scrim coordination,
+                            slot-list management and server operations.
+                        </p>
+                    </div>
+
+                    <span class="timeline-mark">✦</span>
+
+                </article>
+
+
+                <article>
+
+                    <div class="timeline-count">02</div>
+
+                    <div>
+                        <small>TEAM & EVENT SUPPORT</small>
+                        <h3>ESPORTS STAFF EXPERIENCE</h3>
+
+                        <p>
+                            Worked across community and event teams,
+                            coordinating with departments and
+                            supporting moderation operations.
+                        </p>
+                    </div>
+
+                    <span class="timeline-mark">✦</span>
+
+                </article>
+
+
+                <article>
+
+                    <div class="timeline-count">03</div>
+
+                    <div>
+                        <small>EDUCATION</small>
+                        <h3>B.A. GENERAL — HISTORY</h3>
+
+                        <p>
+                            Surendranath College.
+                            Computer Diploma Holder.
+                        </p>
+                    </div>
+
+                    <span class="timeline-mark">✦</span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT SECTION -->
+
+        <section class="contact-section" id="contact">
+
+            <div class="contact-orbit"></div>
+
+            <div class="section-kicker">
+                05 <span>/</span> GUILD CONNECTION
+            </div>
+
+            <p class="contact-overline">
+                HAVE A PROJECT IN MIND?
             </p>
 
-            <div class="profile-tags">
+            <h2>
+                LET'S BUILD<br>
+                <em>SOMETHING EPIC.</em>
+            </h2>
 
-                <span>Python Developer</span>
-                <span>Discord Developer</span>
-                <span>Security Specialist</span>
-                <span>Esports Moderator</span>
+            <a class="button button-primary"
+            href="mailto:soumen96a@gmail.com">
+
+                CONTACT SOUMEN <b>↗</b>
+
+            </a>
+
+            <div class="contact-email">
+                soumen96a@gmail.com
+            </div>
+
+            <div class="social-row">
+
+                <a href="https://github.com/"
+                target="_blank" rel="noopener">
+                    GITHUB ↗
+                </a>
+
+                <a href="https://www.linkedin.com/"
+                target="_blank" rel="noopener">
+                    LINKEDIN ↗
+                </a>
+
+                <a href="mailto:soumen96a@gmail.com">
+                    EMAIL ↗
+                </a>
 
             </div>
 
-        </div>
+        </section>
 
-        <div class="profile-rank">
+    </main>
 
-            <span>HUNTER RANK</span>
-            <h2>S</h2>
 
-        </div>
+    <!-- FOOTER -->
 
-    </div>
+    <footer>
 
-    <div class="about-text">
+        <a class="brand" href="#home">
+            SOUMEN<span>.</span>
+        </a>
 
         <p>
-
-            I am passionate about technology,
-            programming and digital innovation.
-
-            My interests include Discord Bot Development,
-            Security Systems, Automation and AI.
-
-            I enjoy building useful tools,
-            solving technical problems and
-            continuously improving my skills.
-
+            THE SHADOW MONARCH'S JOURNEY CONTINUES.
         </p>
 
-    </div>
+        <small>
+            © <span id="year">2026</span>
+            SOUMEN MONDAL. ALL RIGHTS RESERVED.
+        </small>
 
-</section>
+    </footer>
 
 
-<!-- SKILLS SECTION -->
+    <!-- JAVASCRIPT -->
 
-<section id="skills" class="content-section">
-
-    <div class="section-heading">
-
-        <span>02 / DEVELOPER ATTRIBUTES</span>
-
-        <h2>
-            MY <span>ABILITIES</span>
-        </h2>
-
-    </div>
-
-    <div class="ability-grid">
-
-        <div class="ability-card">
-            <div class="ability-icon">PY</div>
-            <h3>PYTHON</h3>
-            <p>Bot Development & Automation</p>
-            <span>PROGRAMMING</span>
-        </div>
-
-        <div class="ability-card">
-            <div class="ability-icon">JS</div>
-            <h3>JAVASCRIPT</h3>
-            <p>Web & Discord Applications</p>
-            <span>PROGRAMMING</span>
-        </div>
-
-        <div class="ability-card">
-            <div class="ability-icon">DB</div>
-            <h3>DATABASE</h3>
-            <p>SQLite & Data Management</p>
-            <span>DATABASE</span>
-        </div>
-
-        <div class="ability-card">
-            <div class="ability-icon">DC</div>
-            <h3>DISCORD</h3>
-            <p>Bot & Community Development</p>
-            <span>DEVELOPMENT</span>
-        </div>
-
-        <div class="ability-card">
-            <div class="ability-icon">SH</div>
-            <h3>SECURITY</h3>
-            <p>Defensive Security Concepts</p>
-            <span>PROTECTION</span>
-        </div>
-
-        <div class="ability-card">
-            <div class="ability-icon">GH</div>
-            <h3>GITHUB</h3>
-            <p>Version Control & Collaboration</p>
-            <span>TOOLS</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECT SECTION -->
-
-<section id="projects" class="content-section">
-
-    <div class="section-heading">
-
-        <span>03 / SHADOW ARCHIVES</span>
-
-        <h2>
-            MY <span>PROJECTS</span>
-        </h2>
-
-    </div>
-
-    <div class="project-grid">
-
-        <div class="project-card">
-
-            <span class="project-rank">S-RANK PROJECT</span>
-
-            <h3>SENTINEL GUARD</h3>
-
-            <p>
-                Enterprise Discord Security System
-                featuring AntiNuke, AntiRaid,
-                Moderation and Recovery.
-            </p>
-
-            <div class="project-tech">
-                PYTHON · DISCORD.PY · SQLITE
-            </div>
-
-            <span class="project-number">01</span>
-
-        </div>
-
-
-        <div class="project-card">
-
-            <span class="project-rank">A-RANK PROJECT</span>
-
-            <h3>SOUVION AI</h3>
-
-            <p>
-                AI-powered Discord Assistant
-                with Knowledge Management
-                and Modular Architecture.
-            </p>
-
-            <div class="project-tech">
-                PYTHON · AI · JSON
-            </div>
-
-            <span class="project-number">02</span>
-
-        </div>
-
-
-        <div class="project-card">
-
-            <span class="project-rank">A-RANK PROJECT</span>
-
-            <h3>SOUVION PROMO</h3>
-
-            <p>
-                Educational Discord Campaign
-                Simulator with Multi-server
-                Workflow Management.
-            </p>
-
-            <div class="project-tech">
-                NODE.JS · DISCORD.JS
-            </div>
-
-            <span class="project-number">03</span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- EXPERIENCE -->
-
-<section id="experience" class="content-section">
-
-    <div class="section-heading">
-
-        <span>04 / MISSION RECORDS</span>
-
-        <h2>
-            EXPERIENCE <span>LOG</span>
-        </h2>
-
-    </div>
-
-    <div class="mission-list">
-
-        <div class="mission-card">
-
-            <span>MISSION 01</span>
-
-            <h3>DISCORD COMMUNITY MODERATOR</h3>
-
-            <p>
-                Community moderation,
-                esports server operations
-                and scrim coordination.
-            </p>
-
-        </div>
-
-        <div class="mission-card">
-
-            <span>MISSION 02</span>
-
-            <h3>DEVELOPER PROJECTS</h3>
-
-            <p>
-                Developing Discord bots,
-                security systems and
-                AI-powered applications.
-            </p>
-
-        </div>
-
-        <div class="mission-card">
-
-            <span>MISSION 03</span>
-
-            <h3>EDUCATION</h3>
-
-            <p>
-                B.A. General Student,
-                Surendranath College.
-                Computer Diploma Holder.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section id="contact" class="content-section contact-section">
-
-    <div class="section-heading">
-
-        <span>05 / GUILD CONNECTION</span>
-
-        <h2>
-            JOIN THE <span>GUILD</span>
-        </h2>
-
-    </div>
-
-    <p>
-        Have a project or collaboration in mind?
-        Let's create something extraordinary.
-    </p>
-
-    <a href="mailto:soumen96a@gmail.com"
-       class="primary-btn">
-
-        SEND MESSAGE ↗
-
-    </a>
-
-    <div class="social-links">
-
-        <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GITHUB</a>
-
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-
-        <a href="mailto:soumen96a@gmail.com">EMAIL</a>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <h3>SOUMEN<span>.</span></h3>
-
-    <p>
-        THE SHADOW MONARCH'S JOURNEY CONTINUES.
-    </p>
-
-    <p>
-        © <span id="year">2026</span>
-        SOUMEN MONDAL. ALL RIGHTS RESERVED.
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
